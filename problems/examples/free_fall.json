@@ -1,0 +1,19 @@
+{
+  "problem": {
+    "problem_id": "free-fall-001",
+    "title": "Free fall from rest",
+    "statement": "A body falls from rest for 2 seconds under constant acceleration 9.81 m/s^2. What is its displacement? State assumptions and units.",
+    "assumptions": ["Neglect air resistance", "Acceleration is constant"],
+    "documents": []
+  },
+  "agent": {
+    "agent_id": "analyst-001",
+    "role": "Scientific analyst",
+    "instructions": "Check dimensions and explain reasoning. Return only JSON with a text field.",
+    "max_output_tokens": 256,
+    "timeout_seconds": 30
+  },
+  "model": {"backend": "fake"},
+  "limits": {"max_input_tokens": 4096, "max_output_tokens": 256, "total_output_tokens": 512, "timeout_seconds": 30, "max_attempts": 2},
+  "seed": 42
+}

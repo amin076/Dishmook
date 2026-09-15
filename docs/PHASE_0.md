@@ -1,5 +1,7 @@
 # Phase 0 scope and acceptance
 
+Historical record: Phase 0 passed Windows/Linux CI and PR #1 was merged before the user-authorized Phase 1. The limitations below describe the original bootstrap; see PHASE_1.md for current capabilities.
+
 Plan: validate the initial repository, establish a Python package and contracts, implement a Fake Backend and CLI, then test locally and on Windows/Linux GitHub Actions.
 
 Acceptance gates:

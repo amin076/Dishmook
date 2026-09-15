@@ -1,4 +1,4 @@
-name: Phase 0 offline tests
+name: Offline runtime tests
 on:
   push:
   pull_request:
@@ -28,3 +28,27 @@ jobs:
         run: python -m pytest
       - name: Installed CLI smoke
         run: dishmook smoke --seed 42
+      - name: Persistent single-agent smoke and resume
+        run: |
+          dishmook run --spec problems/examples/free_fall.json --run-id ci-run
+          dishmook resume ci-run
+  huggingface-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.14'
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install CPU-only local inference dependencies
+        run: |
+          python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e ".[dev,hf]"
+      - name: Test real local adapter with generated tiny weights and network blocked
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+          HF_HUB_DISABLE_TELEMETRY: '1'
+        run: python -m pytest -m hf
