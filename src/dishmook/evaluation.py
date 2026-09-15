@@ -82,7 +82,7 @@ def _experiment(root, model=None, *, seeds=(7,19,41), case_ids=None, profiles=No
     seeds=list(seeds)
     if not seeds or len(set(seeds))!=len(seeds) or any(isinstance(s,bool) or not isinstance(s,int) or not 0<=s<2**32 for s in seeds):
         raise ValueError("Use distinct valid seeds")
-    protocol={"version":2,"model":model.model_dump(),"seeds":seeds,"cases":chosen,"profiles":active,
+    protocol={"version":3,"model":model.model_dump(),"seeds":seeds,"cases":chosen,"profiles":active,
               "total_output_tokens":output_budget,"total_input_tokens":1048576,"max_rounds":0}
     protocol_path=root/"experiment.json"
     if protocol_path.exists():
@@ -116,7 +116,8 @@ def _experiment(root, model=None, *, seeds=(7,19,41), case_ids=None, profiles=No
                 records.append({"case_id":case["problem"]["problem_id"],"seed":seed,"profile":name,
                                 "campaign_id":run_id,"status":state["status"],
                                 "score":int(checked["passed"]) if model.backend!="fake" else None,
-                                "schema_success":bool(final and final.get("claim")),"assessment":checked,**m})
+                                "schema_success":bool(final and final.get("claim")),
+                                "raw_schema_success":bool(final and final.get("claim") and (final.get("output_parse") or {}).get("raw_schema_valid")),"assessment":checked,**m})
                 if state["status"]=="blocked":
                     blocked=True
     failures=sum(r["status"] != "completed" for r in records)
@@ -131,10 +132,12 @@ def _experiment(root, model=None, *, seeds=(7,19,41), case_ids=None, profiles=No
         rows=[r for r in records if r["profile"]==name]
         summary["profiles"][name]={"campaigns":len(rows),"accuracy":statistics.mean(r["score"] for r in rows) if rows and model.backend!="fake" else None,
                                    "schema_success_rate":statistics.mean(r["schema_success"] for r in rows) if rows else None,
+                                   "raw_schema_success_rate":statistics.mean(r["raw_schema_success"] for r in rows) if rows else None,
+                                   "repaired_output_count":sum(r["repaired_output_count"] for r in rows),
                                    "accepted_answer_accuracy":statistics.mean(r["score"] for r in rows if r["schema_success"]) if model.backend!="fake" and any(r["schema_success"] for r in rows) else None,
                                    "charged_output_tokens":sum(r["charged_output_tokens"] for r in rows)}
     (root/"results.json").write_text(json.dumps({"summary":summary,"records":records},indent=2)+"\n")
-    fields=["case_id","seed","profile","status","score","schema_success","charged_output_tokens","known_input_tokens","known_output_tokens","wall_seconds","peak_vram_bytes"]
+    fields=["case_id","seed","profile","status","score","schema_success","raw_schema_success","repaired_output_count","charged_output_tokens","known_input_tokens","known_output_tokens","wall_seconds","peak_vram_bytes"]
     with (root/"results.csv").open("w",newline="") as stream:
         writer=csv.DictWriter(stream,fieldnames=fields,extrasaction="ignore");writer.writeheader();writer.writerows(records)
     (root/"report.md").write_text("# Dishmook evaluation\n\n"+summary["scientific_conclusion"]+

@@ -163,7 +163,7 @@ def _resume(store: Store, *, runner=execute):
     request = request_for(spec, limit)
     state.update(status="running", failure_reason=None, updated_at=now(), ended_at=None,
                  attempts=state["attempts"] + 1, charged=state["charged"] + limit, reserved=limit,
-                 request=request.model_dump(), response=None)
+                 request=request.model_dump(), response=None, output_parse=None)
     state["attempt_history"].append({"attempt": state["attempts"], "started_at": state["updated_at"],
                                      "code_revision": code_revision(), "reserved": limit, "outcome": "running"})
     store.commit(state, "attempt_started", {"reserved_output_tokens": limit, "timeout_seconds": timeout,
@@ -187,7 +187,9 @@ def _resume(store: Store, *, runner=execute):
         state["hardware"]["gpu"] = response.metadata.get("gpu_name")
         try:
             parser = Candidate if spec.output_mode == "text" else ResearchCandidate
-            candidate = parser.model_validate_json(response.text)
+            from dishmook.output_parser import parse_candidate
+            candidate, output_parse = parse_candidate(response.text, parser)
+            state["output_parse"] = output_parse
         except ValueError:
             raise BackendError("invalid_model_json") from None
         # Never accept model-provided verification status, validator or evidence.

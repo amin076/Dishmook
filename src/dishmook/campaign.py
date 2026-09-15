@@ -119,6 +119,7 @@ def metrics(state):
             "known_input_tokens":sum(r["input_tokens"] for r in results),
             "output_budget":state["spec"]["total_output_tokens"],"input_budget":state["spec"]["total_input_tokens"],
             "exact_text_duplicate_count":len(texts)-len(set(texts)),
+            "repaired_output_count":sum((r.get("output_parse") or {}).get("mode")=="latex_text_escape" for r in results),
             "invalid_citations":sum(len(r.get("invalid_citations",[])) for r in results),
             "wall_seconds":sum(r.get("wall_seconds",0) for r in results),
             "generation_seconds":sum(r.get("generation_seconds",0) for r in results),
@@ -185,7 +186,7 @@ def _execute_job(path, state, job, session):
     result=resume(child_root,job["id"],runner=session)
     candidate=result.get("candidate") or {}
     metadata=(result.get("response") or {}).get("metadata",{})
-    return {"status":result["status"],"claim":result["claim"],"candidate":candidate,
+    return {"status":result["status"],"claim":result["claim"],"candidate":candidate,"output_parse":result.get("output_parse"),
             "charged":result["charged"],"input_tokens":result["input_tokens"],"output_tokens":result["output_tokens"],
             "failure_reason":result["failure_reason"],"invalid_citations":[c for c in candidate.get("citations",[]) if c not in visible],
             "wall_seconds":sum(a.get("wall_seconds",0) for a in result["attempt_history"]),
