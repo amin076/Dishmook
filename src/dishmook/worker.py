@@ -105,7 +105,10 @@ class WorkerSession:
     def close(self):
         if self.connection is not None:
             self.connection.close()
-        if self.process is not None:
+        if self.process is not None and self.process.pid is not None:
+            # Closing the pipe gives an idle worker EOF and lets Python/dependencies
+            # run their cleanup handlers. Retain bounded termination for stuck work.
+            self.process.join(timeout=5)
             if self.process.is_alive():
                 self.process.terminate()
             self.process.join(timeout=2)

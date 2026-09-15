@@ -4,7 +4,7 @@ import pytest
 
 from dishmook.backends import BackendError, HuggingFaceBackend, snapshot_fingerprint
 from dishmook.runtime_models import ModelConfig, ModelRequest
-from dishmook.worker import execute
+from dishmook.worker import execute, WorkerSession
 
 
 @pytest.mark.hf
@@ -39,6 +39,11 @@ def test_actual_local_huggingface_adapter_without_download(tmp_path):
     # Also exercise serialization, loading and usage through the real killable worker.
     spawned = execute(config, request, 30)
     assert (spawned.text, spawned.output_tokens) == (first.text, first.output_tokens)
+    with WorkerSession() as session:
+        served = session(config, request, 30)
+        process = session.process
+        assert (served.text, served.output_tokens) == (first.text, first.output_tokens)
+    assert process.exitcode == 0
     request.max_input_tokens = 1
     with pytest.raises(BackendError, match="input_budget_exceeded"):
         backend.generate(request)
