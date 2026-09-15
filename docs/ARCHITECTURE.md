@@ -1,3 +1,5 @@
+> Historical Phase 1 description. For current campaign, NF4, Kaggle and evaluation behavior, see [phases 2–6](PHASES_2_TO_6.md).
+
 # Architecture — Phase 1
 
 `domain.py` owns research entities; `runtime_models.py` owns execution contracts. `backends.py` supplies fake/local-Hugging-Face generation through a small protocol. `worker.py` provides killable inference. `runtime.py` applies budgets, parsing and lifecycle transitions. `storage.py` owns the transaction and lock. `cli.py` exposes run/prepare/resume and utilities.

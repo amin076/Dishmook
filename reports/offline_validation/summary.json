@@ -1,0 +1,30 @@
+{
+  "backend": "fake",
+  "campaigns": 216,
+  "tasks_completed": 3168,
+  "tasks_failed": 0,
+  "logical_agents_max": 50,
+  "seeds": [
+    7,
+    19,
+    41
+  ],
+  "cases": 12,
+  "profiles": [
+    "single",
+    "self_reflection",
+    "agents_5",
+    "agents_10",
+    "agents_20",
+    "agents_50"
+  ],
+  "generated_output_unit": "UTF-8 bytes, not LLM tokens",
+  "charged_output_units": 215424,
+  "known_input_units": 10318704,
+  "scientific_accuracy": null,
+  "scientific_improvement": null,
+  "paid_service_cost_usd": 0,
+  "dataset_sha256": "64e8bc570243cf9b8690bd34a7c1eb8187799ec0c5c430cab40add77e122024f",
+  "protocol_sha256": "ecc21c08009ac6a6a0fde17bdd33482dd31518dc73c0b3114427c06f43f122bc",
+  "scope": "Offline orchestration and accounting evidence only."
+}

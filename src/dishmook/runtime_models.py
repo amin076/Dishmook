@@ -1,8 +1,8 @@
 """Versioned single-agent execution contracts (separate from Phase 0 fixtures)."""
 
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import Field, model_validator
+from pydantic import Field, StrictStr, model_validator
 
 from dishmook.domain import Agent, Entity, PositiveInt, Problem, Text
 
@@ -14,7 +14,8 @@ class ModelConfig(Entity):
     local_path: str | None = None
     snapshot_sha256: str | None = None
     device: Literal["cpu", "cuda"] = "cpu"
-    quantization: Literal["none"] = "none"
+    quantization: Literal["none", "nf4"] = "none"
+    cuda_index: int = Field(default=0, ge=0, strict=True)
     # No paid endpoint, network download, custom code or pickle weights.
     paid_api_allowed: Literal[False] = False
     paid_compute_allowed: Literal[False] = False
@@ -27,10 +28,14 @@ class ModelConfig(Entity):
                 raise ValueError("Fake backend metadata must identify the fixture")
             if self.snapshot_sha256 is not None:
                 raise ValueError("Fake backend has no snapshot")
+            if self.quantization != "none" or self.cuda_index != 0:
+                raise ValueError("Fake backend has no GPU or quantization")
         elif not self.local_path or not re.fullmatch(r"[a-f0-9]{40}", self.revision):
             raise ValueError("Local Hugging Face requires a directory and pinned 40-character revision")
         elif not self.snapshot_sha256 or not re.fullmatch(r"[a-f0-9]{64}", self.snapshot_sha256):
             raise ValueError("Local Hugging Face requires an expected snapshot SHA-256")
+        if self.quantization == "nf4" and self.device != "cuda":
+            raise ValueError("NF4 execution requires an existing CUDA GPU")
         return self
 
 
@@ -49,6 +54,7 @@ class ExecutionSpec(Entity):
     model: ModelConfig = Field(default_factory=ModelConfig)
     limits: Limits = Field(default_factory=Limits)
     seed: int = Field(default=0, strict=True, ge=0, le=2**32-1)
+    output_mode: Literal["text", "research"] = "text"
 
 
 class ModelRequest(Entity):
@@ -68,3 +74,9 @@ class ModelResponse(Entity):
 
 class Candidate(Entity):
     text: Text
+
+
+class ResearchCandidate(Candidate):
+    answer: StrictStr | Annotated[float, Field(strict=True, allow_inf_nan=False)] | None = None
+    citations: list[str] = Field(default_factory=list, max_length=50)
+    disagreements: list[Text] = Field(default_factory=list, max_length=20)

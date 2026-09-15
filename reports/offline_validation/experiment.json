@@ -1,0 +1,201 @@
+{
+  "version": 1,
+  "model": {
+    "backend": "fake",
+    "model_id": "dishmook-fake",
+    "revision": "v1",
+    "local_path": null,
+    "snapshot_sha256": null,
+    "device": "cpu",
+    "quantization": "none",
+    "cuda_index": 0,
+    "paid_api_allowed": false,
+    "paid_compute_allowed": false
+  },
+  "seeds": [
+    7,
+    19,
+    41
+  ],
+  "cases": [
+    {
+      "problem": {
+        "problem_id": "fall",
+        "title": "Constant acceleration",
+        "statement": "A body falls from rest for 2 seconds at 9.81 m/s^2 with no drag. Return displacement in metres as the numeric answer.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "numeric",
+      "expected": 19.62,
+      "category": "mechanics"
+    },
+    {
+      "problem": {
+        "problem_id": "energy",
+        "title": "Kinetic energy",
+        "statement": "A 3 kg mass moves at 4 m/s. Return kinetic energy in joules as the numeric answer.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "numeric",
+      "expected": 24,
+      "category": "mechanics"
+    },
+    {
+      "problem": {
+        "problem_id": "ohm",
+        "title": "Ohm law",
+        "statement": "A resistor has resistance 12 ohm and voltage 6 V. Return current in A as the numeric answer.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "numeric",
+      "expected": 0.5,
+      "category": "electricity"
+    },
+    {
+      "problem": {
+        "problem_id": "period",
+        "title": "Period",
+        "statement": "A periodic wave has frequency 25 Hz. Return period in seconds as numeric answer.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "numeric",
+      "expected": 0.04,
+      "category": "waves"
+    },
+    {
+      "problem": {
+        "problem_id": "dimensions",
+        "title": "Dimensional analysis",
+        "statement": "What are the base dimensions of energy? Format the string answer as M^a L^b T^c, replacing a, b, c with integer exponents.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "exact",
+      "expected": "M^1 L^2 T^-2",
+      "category": "dimensions"
+    },
+    {
+      "problem": {
+        "problem_id": "limit",
+        "title": "Limiting case",
+        "statement": "For x != 0, f(x)=sin(x)/x in radians. Return the limit as x approaches 0 as numeric answer.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "numeric",
+      "expected": 1,
+      "category": "limits"
+    },
+    {
+      "problem": {
+        "problem_id": "probability",
+        "title": "Independent events",
+        "statement": "Two fair independent coin tosses occur. Return the probability of two heads as numeric answer.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "numeric",
+      "expected": 0.25,
+      "category": "probability"
+    },
+    {
+      "problem": {
+        "problem_id": "inconsistent",
+        "title": "Inconsistent premises",
+        "statement": "An isolated system has no energy input/output, and its total energy doubles without any change in the definition of total energy. Are these premises consistent with energy conservation? Answer consistent or inconsistent.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "exact",
+      "expected": "inconsistent",
+      "category": "assumptions"
+    },
+    {
+      "problem": {
+        "problem_id": "evidence",
+        "title": "Missing source",
+        "statement": "No papers or experimental data are supplied. A statement claims material X exceeds all measured superconducting temperatures. Is this established by the supplied evidence? Answer supported or insufficient_evidence.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "exact",
+      "expected": "insufficient_evidence",
+      "category": "source_verification"
+    },
+    {
+      "problem": {
+        "problem_id": "code",
+        "title": "Code repair",
+        "statement": "Repair this Python function so it adds one: def increment(x): return x - 1. Return the corrected function source in the answer field. Do not execute code.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "python_ast",
+      "expected": "def increment(x):\n    return x + 1",
+      "category": "code"
+    },
+    {
+      "problem": {
+        "problem_id": "derivative",
+        "title": "Symbolic derivative",
+        "statement": "Find d(x^3)/dx. Use the exact compact expression in the answer string with * and ** operators, without spaces.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "exact",
+      "expected": "3*x**2",
+      "category": "symbolic"
+    },
+    {
+      "problem": {
+        "problem_id": "uncertainty",
+        "title": "Independent uncertainty",
+        "statement": "Two independent measurements have standard uncertainties 3 and 4 units and are summed. Return the combined standard uncertainty as numeric answer.",
+        "assumptions": [],
+        "documents": []
+      },
+      "validator": "numeric",
+      "expected": 5,
+      "category": "uncertainty"
+    }
+  ],
+  "profiles": [
+    [
+      "single",
+      1,
+      false
+    ],
+    [
+      "self_reflection",
+      1,
+      true
+    ],
+    [
+      "agents_5",
+      5,
+      false
+    ],
+    [
+      "agents_10",
+      10,
+      false
+    ],
+    [
+      "agents_20",
+      20,
+      false
+    ],
+    [
+      "agents_50",
+      50,
+      false
+    ]
+  ],
+  "total_output_tokens": 16384,
+  "total_input_tokens": 1048576,
+  "max_rounds": 0
+}

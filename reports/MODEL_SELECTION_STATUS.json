@@ -1,0 +1,5 @@
+{
+  "status": "blocked_pending_real_gpu_evidence",
+  "selected_model": null,
+  "reason": "Comparable real-model benchmark evidence is still missing. A user screenshot reports T4 generation, but does not identify model revision, quantization or a complete scored answer. No model ranking is inferred from Fake Backend runs."
+}

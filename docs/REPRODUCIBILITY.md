@@ -1,3 +1,5 @@
+> Historical Phase 1 description. For current campaign, NF4, Kaggle and evaluation behavior, see [phases 2–6](PHASES_2_TO_6.md).
+
 # Reproducibility — Phase 1
 
 Linux reference: Python 3.12.14 (`.python-version`). Windows CI: 3.12.10 because setup-python has no Windows 2025 x64 build of 3.12.14. Direct dependencies are pinned, including optional Transformers 4.57.1/PyTorch 2.8.0. Transitive dependencies are not fully locked; record a full environment before research benchmarking.

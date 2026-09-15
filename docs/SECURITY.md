@@ -9,3 +9,5 @@ Strings are scrubbed for common token forms, password/key assignments and known 
 Run IDs reject traversal and separators. Existing IDs are not overwritten. Run directory, database, lock and export symlinks are rejected. An OS lock prevents concurrent controllers. Use a private trusted local filesystem; checks do not defend against hostile users concurrently replacing parent directories, SQLite sidecars or model files. Snapshots must be trusted, licensed and immutable during execution. Hashes verify integrity, not origin authenticity.
 
 Model-generated verification/evidence fields are rejected. Only future independent validators may change scientific status.
+
+Explicit `prepare-model --download` is a separate online provisioning step for pinned public snapshots. Inference remains local-only. Campaigns execute role prompts, never generated Python. Checkpoint ZIP restoration validates paths, types and expanded size; use trusted local directories and archive only closed runs.

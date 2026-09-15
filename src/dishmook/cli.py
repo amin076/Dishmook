@@ -33,6 +33,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="dishmook")
     parser.add_argument("--version", action="version", version=__version__)
     sub = parser.add_subparsers(dest="command", required=True)
+    from dishmook.research_cli import COMMANDS, dispatch, register
+    register(sub)
     check = sub.add_parser("smoke", help="Run the offline Fake Backend fixture")
     check.add_argument("--seed", type=int, default=0)
     schema = sub.add_parser("schema", help="Print an entity JSON Schema")
@@ -50,7 +52,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         exit_code = 0
-        if args.command == "smoke":
+        if args.command in COMMANDS:
+            output, exit_code = dispatch(args)
+        elif args.command == "smoke":
             output = smoke(args.seed)
         elif args.command == "schema":
             output = ENTITIES[args.entity].model_json_schema()

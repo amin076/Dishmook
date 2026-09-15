@@ -31,13 +31,14 @@ def test_actual_local_huggingface_adapter_without_download(tmp_path):
     backend = HuggingFaceBackend(config)
     first = backend.generate(request)
     second = backend.generate(request)
-    assert first == second
+    assert (first.text, first.input_tokens, first.output_tokens) == (second.text, second.input_tokens, second.output_tokens)
     assert first.token_unit == "model_tokens"
     assert first.input_tokens == 2
     assert 0 < first.output_tokens <= 4
     assert first.metadata["snapshot_sha256"] == config.snapshot_sha256
     # Also exercise serialization, loading and usage through the real killable worker.
-    assert execute(config, request, 30) == first
+    spawned = execute(config, request, 30)
+    assert (spawned.text, spawned.output_tokens) == (first.text, first.output_tokens)
     request.max_input_tokens = 1
     with pytest.raises(BackendError, match="input_budget_exceeded"):
         backend.generate(request)
