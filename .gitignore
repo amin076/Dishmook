@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Dishmook model weights, private run output and credentials
+models/
+runs/
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt
+.env.*
+!.env.example
+kaggle.json
