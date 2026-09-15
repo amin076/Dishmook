@@ -2,47 +2,43 @@
 
 An open-source research lab for testing whether structured multi-agent workflows improve scientific answers under a fixed compute budget.
 
-**Current implementation: Phase 0 only.** The Fake Backend is a deterministic infrastructure fixture, not an LLM or scientific solver. No model weights, API keys, paid services, GPU, web UI, scheduler or generated-code executor are used.
+**Current implementation: Phase 1, single-agent runtime.** Run one problem using a Fake Backend or an already downloaded local Hugging Face model. Results remain scientifically **unverified**. No paid API, model download, multi-agent scheduler or generated-code executor exists.
 
-## شروع سریع
+## نصب
 
-با Python `3.12.10` در Windows یا `3.12.14` در Linux:
+Python `3.12.10` on Windows; `3.12.14` on Linux:
 
 ```sh
 python -m venv .venv
 ```
 
-Windows PowerShell:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Linux:
-
-```sh
-source .venv/bin/activate
-```
-
-سپس:
+Activate `.venv` using the standard command for your shell, then:
 
 ```sh
 python -m pip install -e ".[dev]"
 python -m pytest
-python -m dishmook smoke --seed 42
-python -m dishmook schema claim
 ```
 
-The installed `dishmook` command provides the same CLI. Installation downloads dependencies; tests and smoke execution work offline after installation. The GitHub runner itself still requires network access for checkout and installation.
+Installation downloads dependencies; runtime and tests work offline afterwards. Windows/Linux CI tests the base runtime. A separate CPU CI job tests Transformers using tiny weights generated inside the test.
 
-## حدود فاز صفر
+## اجرای فاز یک
 
-- قراردادهای `Problem`, `Agent`, `Task`, `Claim`, `Evidence`, `Run` با Pydantic.
-- مدل آزمایشی تکرارپذیر با خروجی `unverified` و هزینهٔ صفر.
-- CLI برای تست اولیه و خروجی JSON Schema.
-- تست CPU روی Windows و Linux؛ تست‌ها اتصال شبکهٔ Python را مسدود می‌کنند.
-- ثبت وضعیت علمی در Schema، به‌تنهایی اثبات درستی ادعا نیست.
+```sh
+python -m dishmook run --spec problems/examples/free_fall.json --run-id first-run
+python -m dishmook resume first-run
+```
 
-هدف ۵۰ ایجنت منطقی و اجرای مدل مشترک، مربوط به مراحل بعد است. پایان فاز صفر نیازمند موفقیت CI است و به معنی آماده‌بودن MVP نیست.
+نمونهٔ پیش‌فرض از مدل آزمایشی استفاده می‌کند؛ پاسخ علمی تولید نمی‌کند. دستور دوم، اجرای کامل‌شده را دوباره به مدل نمی‌فرستد. نتایج در `runs/first-run/` ثبت می‌شوند.
 
-See [the complete Persian specification](Dishmook_Project_Spec_FA.md), [Phase 0 scope](docs/PHASE_0.md), [architecture](docs/ARCHITECTURE.md), [security](docs/SECURITY.md), [reproducibility](docs/REPRODUCIBILITY.md), [scientific validation](docs/SCIENTIFIC_VALIDATION.md), and [free compute](docs/FREE_COMPUTE.md).
+برای آماده‌سازی و اجرای بعدی:
+
+```sh
+python -m dishmook run --spec problems/examples/free_fall.json --run-id second-run --prepare-only
+python -m dishmook resume second-run
+```
+
+Use a new run ID for each experiment. Existing IDs are never overwritten. Omit `--run-id` for a UUID. `--runs-dir` selects a trusted local output directory. Resume cannot change the saved model, seed or budget. The original `smoke` and `schema claim` commands remain available.
+
+هدف ۵۰ ایجنت منطقی، انتخاب مدل 7B–8B و آزمایش Kaggle متعلق به مراحل بعد است. این نسخه به معنی تکمیل MVP نیست.
+
+See [Phase 1 guide](docs/PHASE_1.md), [Persian specification](Dishmook_Project_Spec_FA.md), [architecture](docs/ARCHITECTURE.md), [security](docs/SECURITY.md), [reproducibility](docs/REPRODUCIBILITY.md), [scientific validation](docs/SCIENTIFIC_VALIDATION.md), and [free compute](docs/FREE_COMPUTE.md).

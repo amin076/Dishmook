@@ -1,9 +1,13 @@
-# Reproducibility
+# Reproducibility — Phase 1
 
-Reference interpreter: Python 3.12.14. Direct package/test/build dependencies are pinned in `pyproject.toml`. Use a fresh virtual environment. A complete transitive lock and real model revision will be required before model benchmarking.
+Linux reference: Python 3.12.14 (`.python-version`). Windows CI: 3.12.10 because setup-python has no Windows 2025 x64 build of 3.12.14. Direct dependencies are pinned, including optional Transformers 4.57.1/PyTorch 2.8.0. Transitive dependencies are not fully locked; record a full environment before research benchmarking.
 
-Windows CI uses Python 3.12.10, explicitly pinned in the matrix: setup-python reported that 3.12.14 x64 is unavailable for Windows 2025. Linux CI and the local reference use 3.12.14. The root `.python-version` records the Linux reference; Windows developers should select 3.12.10 explicitly. This patch-version difference is tested, not silently treated as an identical environment.
+Fake claims and known usage are identical for identical sanitized input, agent instructions and seed. Canonical messages are hashed instead of Python's randomized hash. Run IDs, timestamps, hardware and wall times intentionally differ. Phase 0 smoke remains byte-identical.
 
-`python -m dishmook smoke --seed 42` returns byte-identical JSON for the same implementation and seed. Fake claim IDs use SHA-256 of canonical input and seed; they do not use Python's randomized hash. This is fixture determinism, not evidence for GPU determinism.
+The real adapter uses greedy generation and a seed. It checks local asset SHA-256 and records chat-template SHA-256 and library versions. CUDA determinism across devices is not guaranteed. The generated tiny CPU fixture tests integration, not scientific quality.
 
-The smoke manifest records a fake model ID/revision, seed, active agents, budget configuration, cost policy and completion status. `code_revision` is honestly `unknown` because this fixture does not query Git. Real hardware metadata, timestamps, run persistence, append-only events and idempotent resume are deferred to the runtime phase. `smoke-run` is a fixed fixture label, not a unique production run identifier.
+The execution spec is hashed and immutable on resume. The manifest records initial Git revision, model ID/revision, seed, limits, agent, hardware, times and outcomes; attempts record their own code revisions. Git is unknown outside a checkout. RAM is host physical memory, not a cgroup allocation. Unavailable metadata is null. Attempt wall time is not GPU utilization or billed time.
+
+An uncommitted working tree appends `-dirty` to the recorded Git revision; it must not be presented as a clean reproducible commit.
+
+Transactions ensure at most one committed result for this single task. Interrupted attempts can execute again within limits: exactly-once model execution is not claimed. Unknown usage retains its full allowance. Preserve the complete closed run directory, especially state.sqlite3. JSON exports alone are insufficient. Filesystem loss, live cross-machine copying and unreliable disks are outside this phase.

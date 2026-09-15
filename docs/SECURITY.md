@@ -1,7 +1,11 @@
 # Security boundary
 
-Problem statements and document strings are untrusted data. Phase 0 hashes fixture input; it never evaluates code, fetches documents, invokes subprocess tools or opens paths supplied by a model. The fixed response does not echo input. CLI validation errors omit Pydantic's input values.
+Problem statements and document strings are untrusted data in a user-role message. Agent configuration is operator-controlled instruction. Neither is executed as code. Prompt injection can still influence a model, so every candidate remains unverified and no generated tools run.
 
-Identifiers reject path separators and traversal forms, but this is not a filesystem sandbox. The network-disabled policy is a configuration constraint. Test socket patches detect ordinary Python network access; they are not operating-system isolation.
+The only backends are fake and local Hugging Face. Local loading sets offline flags, disables telemetry, and requires local_files_only=True, trust_remote_code=False and safetensors. There is no remote inference client. These are application controls, not an OS network sandbox. Tests block Python socket connections; the actual-adapter CPU test generates local weights without downloads. The worker has a killable time boundary but no enforced OS memory cap. Future generated-code tools need separate memory/network/library isolation.
 
-Before generated-code execution is introduced, implement and test an actual isolated runtime with time and memory limits, denied network, allowlisted libraries and no inherited credentials. Do not claim a Python subprocess alone is secure isolation. Before document retrieval, address prompt injection, provenance spoofing and sensitive data redaction. Never commit keys or private research inputs.
+Strings are scrubbed for common token forms, password/key assignments and known secret environment values before persistence. Dependency output and raw exceptions are suppressed; only safe error codes are logged. Redaction is best-effort, not comprehensive. Never supply secrets. Run files contain research text and are not encrypted. They are ignored by Git and need review before sharing.
+
+Run IDs reject traversal and separators. Existing IDs are not overwritten. Run directory, database, lock and export symlinks are rejected. An OS lock prevents concurrent controllers. Use a private trusted local filesystem; checks do not defend against hostile users concurrently replacing parent directories, SQLite sidecars or model files. Snapshots must be trusted, licensed and immutable during execution. Hashes verify integrity, not origin authenticity.
+
+Model-generated verification/evidence fields are rejected. Only future independent validators may change scientific status.

@@ -1,5 +1,7 @@
 # Zero paid compute
 
-Phase 0 supports only `dishmook-fake/v1`, running on CPU. `CostPolicy` rejects paid API, paid compute, network enablement and unsupported backend values. No credentials are read. The fixture's estimated service cost is exactly USD 0; this is not a measurement of electricity or the user's development subscriptions.
+Phase 1 supports fake CPU execution and local Hugging Face on an existing CPU/CUDA device. Paid API/compute configurations are rejected. No remote endpoint, automatic download or paid fallback exists. No application API credentials are required.
 
-Kaggle is the planned quota-limited GPU target in the project specification. No current quota, GPU availability or model feasibility has been verified in Phase 0. Check these during Phase 2 before choosing a model. Unavailability must stop or defer execution; do not silently fall back to paid services. Do not commit weights, caches or large run output.
+Estimated service cost is USD 0 because Dishmook purchases no services. It cannot detect whether a host was rented elsewhere: use an owned machine or confirmed free quota. Electricity and development subscriptions are not measured. Wall time is recorded, not fabricated GPU billing.
+
+Kaggle remains the planned quota-limited target. No GPU allocation or research model is selected in this phase. Unavailable CUDA fails with gpu_unavailable. Weights and run state are ignored by Git. Tests create tiny model weights only in temporary folders and use standard CPU CI runners.
