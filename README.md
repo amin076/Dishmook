@@ -6,7 +6,7 @@ An open-source research lab for testing whether structured multi-agent workflows
 
 ## شروع سریع
 
-با Python `3.12.14`، در Windows یا Linux:
+با Python `3.12.10` در Windows یا `3.12.14` در Linux:
 
 ```sh
 python -m venv .venv

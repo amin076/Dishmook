@@ -4,7 +4,7 @@ Plan: validate the initial repository, establish a Python package and contracts,
 
 Acceptance gates:
 
-1. Editable package installation succeeds with Python 3.12.14.
+1. Editable package installation succeeds with Python 3.12.14 on Linux and 3.12.10 on Windows.
 2. All six entity schemas export valid JSON and reject invalid inputs.
 3. The fixture smoke produces deterministic unverified output without external inference.
 4. Tests pass on both GitHub Actions matrix platforms without GPU, API calls or credentials.
