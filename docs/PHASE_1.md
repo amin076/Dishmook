@@ -1,3 +1,5 @@
+> Historical Phase 1 description. For current campaign, NF4, Kaggle and evaluation behavior, see [phases 2–6](PHASES_2_TO_6.md).
+
 # Phase 1 — موتور تک‌ایجنتی
 
 ## Scope and acceptance

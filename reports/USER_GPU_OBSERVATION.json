@@ -1,0 +1,15 @@
+{
+  "source": "User-provided Kaggle screenshot",
+  "independently_reproduced": false,
+  "gpu": "Tesla T4",
+  "input_tokens": 111,
+  "generated_tokens": 300,
+  "seconds": 17.63,
+  "tokens_per_second": 17.02,
+  "peak_allocated_vram_reported_gb": 5.34,
+  "model_id": null,
+  "model_revision": null,
+  "quantization": null,
+  "answer_correctness": null,
+  "limitation": "Displayed output ends during equation substitution. This is not a completed comparative Dishmook benchmark."
+}

@@ -1,0 +1,602 @@
+[
+  {
+    "index": 1,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-01",
+      "role": "Problem restatement",
+      "instructions": "Act as Problem restatement. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 2,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-02",
+      "role": "Unknowns",
+      "instructions": "Act as Unknowns. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 3,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-03",
+      "role": "Given data",
+      "instructions": "Act as Given data. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 4,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-04",
+      "role": "Explicit assumptions",
+      "instructions": "Act as Explicit assumptions. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 5,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-05",
+      "role": "Hidden assumptions",
+      "instructions": "Act as Hidden assumptions. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 6,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-06",
+      "role": "Boundary conditions",
+      "instructions": "Act as Boundary conditions. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 7,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-07",
+      "role": "Dimensional analysis",
+      "instructions": "Act as Dimensional analysis. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 8,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-08",
+      "role": "Ambiguities",
+      "instructions": "Act as Ambiguities. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 9,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-09",
+      "role": "Subproblem planning",
+      "instructions": "Act as Subproblem planning. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 10,
+    "group": "A",
+    "agent": {
+      "agent_id": "agent-10",
+      "role": "Success criteria",
+      "instructions": "Act as Success criteria. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 11,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-11",
+      "role": "Concept mapping",
+      "instructions": "Act as Concept mapping. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 12,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-12",
+      "role": "Related theories",
+      "instructions": "Act as Related theories. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 13,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-13",
+      "role": "Known methods",
+      "instructions": "Act as Known methods. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 14,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-14",
+      "role": "Search keywords",
+      "instructions": "Act as Search keywords. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 15,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-15",
+      "role": "Terminology",
+      "instructions": "Act as Terminology. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 16,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-16",
+      "role": "Claim extraction",
+      "instructions": "Act as Claim extraction. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 17,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-17",
+      "role": "Claim sources",
+      "instructions": "Act as Claim sources. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 18,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-18",
+      "role": "Method comparison",
+      "instructions": "Act as Method comparison. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 19,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-19",
+      "role": "Research gaps",
+      "instructions": "Act as Research gaps. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 20,
+    "group": "B",
+    "agent": {
+      "agent_id": "agent-20",
+      "role": "Evidence librarian",
+      "instructions": "Act as Evidence librarian. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 21,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-21",
+      "role": "Analytical derivation",
+      "instructions": "Act as Analytical derivation. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 22,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-22",
+      "role": "Proof construction",
+      "instructions": "Act as Proof construction. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 23,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-23",
+      "role": "Counterexamples",
+      "instructions": "Act as Counterexamples. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 24,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-24",
+      "role": "Logic review",
+      "instructions": "Act as Logic review. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 25,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-25",
+      "role": "Limiting cases",
+      "instructions": "Act as Limiting cases. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 26,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-26",
+      "role": "Stability",
+      "instructions": "Act as Stability. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 27,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-27",
+      "role": "Uncertainty",
+      "instructions": "Act as Uncertainty. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 28,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-28",
+      "role": "Order of magnitude",
+      "instructions": "Act as Order of magnitude. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 29,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-29",
+      "role": "Hypothesis generation",
+      "instructions": "Act as Hypothesis generation. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 30,
+    "group": "C",
+    "agent": {
+      "agent_id": "agent-30",
+      "role": "Hypothesis comparison",
+      "instructions": "Act as Hypothesis comparison. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 31,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-31",
+      "role": "Algorithm design",
+      "instructions": "Act as Algorithm design. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 32,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-32",
+      "role": "Python code proposal",
+      "instructions": "Act as Python code proposal. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 33,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-33",
+      "role": "Numerical experiment proposal",
+      "instructions": "Act as Numerical experiment proposal. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 34,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-34",
+      "role": "Test design",
+      "instructions": "Act as Test design. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 35,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-35",
+      "role": "Simulation design",
+      "instructions": "Act as Simulation design. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 36,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-36",
+      "role": "Parameter sweep design",
+      "instructions": "Act as Parameter sweep design. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 37,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-37",
+      "role": "Sensitivity analysis",
+      "instructions": "Act as Sensitivity analysis. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 38,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-38",
+      "role": "Reproducibility review",
+      "instructions": "Act as Reproducibility review. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 39,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-39",
+      "role": "Output analysis",
+      "instructions": "Act as Output analysis. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 40,
+    "group": "D",
+    "agent": {
+      "agent_id": "agent-40",
+      "role": "Artifact inventory",
+      "instructions": "Act as Artifact inventory. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. You may propose calculations or code as text; no execution tool is available.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 41,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-41",
+      "role": "Scientific reviewer",
+      "instructions": "Act as Scientific reviewer. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 42,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-42",
+      "role": "Mathematical reviewer",
+      "instructions": "Act as Mathematical reviewer. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 43,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-43",
+      "role": "Computational reviewer",
+      "instructions": "Act as Computational reviewer. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 44,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-44",
+      "role": "Hallucination reviewer",
+      "instructions": "Act as Hallucination reviewer. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 45,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-45",
+      "role": "Citation reviewer",
+      "instructions": "Act as Citation reviewer. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 46,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-46",
+      "role": "Assumption red team",
+      "instructions": "Act as Assumption red team. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 47,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-47",
+      "role": "Baseline comparison",
+      "instructions": "Act as Baseline comparison. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 48,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-48",
+      "role": "Confidence review",
+      "instructions": "Act as Confidence review. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 49,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-49",
+      "role": "Synthesis",
+      "instructions": "Act as Synthesis. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  },
+  {
+    "index": 50,
+    "group": "E",
+    "agent": {
+      "agent_id": "agent-50",
+      "role": "Final editor",
+      "instructions": "Act as Final editor. Address only this responsibility using the problem and supplied local evidence. Distinguish assumptions, proposals and checked facts. Cite existing claim IDs when used. State specific unresolved disagreements. Never claim web search, code execution or independent verification that did not occur. Produce the final answer field and a concise synthesis. Resolve contradictions with evidence, never by majority vote; keep unresolved issues explicit.",
+      "max_output_tokens": 16384,
+      "timeout_seconds": 600
+    },
+    "evaluation_criterion": "Role relevance, supported reasoning, explicit uncertainty and valid claim references."
+  }
+]

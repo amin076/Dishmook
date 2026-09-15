@@ -4,20 +4,24 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dishmook"
-version = "0.1.0"
-description = "Zero-paid-compute scientific research lab — single-agent runtime"
+version = "0.2.0"
+description = "Zero-paid-compute multi-agent scientific research experiments"
 requires-python = ">=3.12,<3.13"
 dependencies = ["pydantic==2.13.5"]
 
 [project.optional-dependencies]
 dev = ["pytest==8.4.2"]
 hf = ["transformers==4.57.1", "torch==2.8.0"]
+gpu = ["transformers==4.57.1", "torch==2.8.0", "accelerate==1.10.1", "bitsandbytes==0.48.1"]
 
 [project.scripts]
 dishmook = "dishmook.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+dishmook = ["data/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -228,3 +228,5 @@ runs/
 .env.*
 !.env.example
 kaggle.json
+restored-campaigns/
+ci-checkpoint.zip

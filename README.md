@@ -2,7 +2,7 @@
 
 An open-source research lab for testing whether structured multi-agent workflows improve scientific answers under a fixed compute budget.
 
-**Current implementation: Phase 1, single-agent runtime.** Run one problem using a Fake Backend or an already downloaded local Hugging Face model. Results remain scientifically **unverified**. No paid API, model download, multi-agent scheduler or generated-code executor exists.
+**Current implementation: campaign and evaluation infrastructure (phases 2–5).** Includes 50 logical roles, bounded scheduling, persistent model workers, resumable checkpoints, local Hugging Face/NF4 support, and Kaggle notebooks. GPU model selection and scientific acceptance remain pending. There is no generated-code executor or paid inference client. See [current status](docs/PHASES_2_TO_6.md).
 
 ## نصب
 
@@ -39,6 +39,18 @@ python -m dishmook resume second-run
 
 Use a new run ID for each experiment. Existing IDs are never overwritten. Omit `--run-id` for a UUID. `--runs-dir` selects a trusted local output directory. Resume cannot change the saved model, seed or budget. The original `smoke` and `schema claim` commands remain available.
 
-هدف ۵۰ ایجنت منطقی، انتخاب مدل 7B–8B و آزمایش Kaggle متعلق به مراحل بعد است. این نسخه به معنی تکمیل MVP نیست.
+## Campaigns and Kaggle
+
+```sh
+python -m dishmook campaign --spec configs/campaign_50.json --campaign-id fifty --max-tasks 13
+python -m dishmook campaign-resume fifty
+python -m dishmook evaluate --output-dir runs/comparison
+```
+
+These defaults use Fake Backend and establish no scientific accuracy. Offline validation completed 216 campaigns / 3,168 tasks with zero failures; [evidence](reports/offline_validation/summary.json).
+
+برای اتصال Kaggle به پروژه، [Notebook انتخاب مدل](notebooks/kaggle_model_selection.ipynb) را وارد Kaggle کن و در سلول نخست `SOURCE_REVISION` را برابر SHA کامل همین نسخهٔ کد قرار بده. پس از انتخاب مبتنی بر شواهد، [Notebook مقایسهٔ ایجنت‌ها](notebooks/kaggle_campaign.ipynb) را اجرا کن. راه جایگزین، افزودن آرشیو کد با مسیر مشخص‌شده در Notebook است. این Notebookها هنوز روی Kaggle اجرا نشده‌اند؛ گزارش تصویری شما از اجرای T4 جداگانه ثبت شده است.
+
+انتخاب مدل و اثبات بهبود علمی هنوز انجام نشده؛ فاز ۶ به نتایج واقعی فاز ۵ وابسته است.
 
 See [Phase 1 guide](docs/PHASE_1.md), [Persian specification](Dishmook_Project_Spec_FA.md), [architecture](docs/ARCHITECTURE.md), [security](docs/SECURITY.md), [reproducibility](docs/REPRODUCIBILITY.md), [scientific validation](docs/SCIENTIFIC_VALIDATION.md), and [free compute](docs/FREE_COMPUTE.md).

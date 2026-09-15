@@ -32,6 +32,15 @@ jobs:
         run: |
           dishmook run --spec problems/examples/free_fall.json --run-id ci-run
           dishmook resume ci-run
+      - name: Fifty-agent pause/resume smoke
+        run: |
+          dishmook campaign --spec configs/campaign_50.json --campaign-id ci-fifty --max-tasks 13
+          dishmook campaign-resume ci-fifty
+      - name: Portable checkpoint
+        run: |
+          dishmook archive-checkpoint runs/campaigns ci-checkpoint.zip
+          dishmook restore-checkpoint ci-checkpoint.zip restored-campaigns
+          dishmook campaign-resume ci-fifty --runs-dir restored-campaigns
   huggingface-cpu:
     runs-on: ubuntu-latest
     timeout-minutes: 10

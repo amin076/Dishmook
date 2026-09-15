@@ -1,3 +1,5 @@
+> Historical Phase 1 description. For current campaign, NF4, Kaggle and evaluation behavior, see [phases 2–6](PHASES_2_TO_6.md).
+
 # Zero paid compute
 
 Phase 1 supports fake CPU execution and local Hugging Face on an existing CPU/CUDA device. Paid API/compute configurations are rejected. No remote endpoint, automatic download or paid fallback exists. No application API credentials are required.
