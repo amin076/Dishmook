@@ -137,3 +137,13 @@ def test_infrastructure_failure_stops_campaign(tmp_path):
     assert state["status"]=="blocked"
     assert metrics(state)["failed_tasks"]==1
     assert sum(j["status"]=="pending" for j in state["jobs"])==49
+
+
+def test_idle_worker_exits_cleanly_on_close():
+    request=ModelRequest(messages=[{"role":"user","content":"test"}],seed=1,max_input_tokens=1000,max_output_tokens=256)
+    session=WorkerSession()
+    session(ModelConfig(),request,10)
+    process=session.process
+    session.close()
+    assert not process.is_alive()
+    assert process.exitcode == 0

@@ -75,7 +75,7 @@ def dispatch(args):
         model=ModelConfig.model_validate(load(args.model)) if args.model else ModelConfig()
         result = experiment(args.output_dir,model,seeds=args.seeds,case_ids=args.cases,profiles=args.profiles,
                             output_budget=args.output_budget,max_new_campaigns=args.max_new_campaigns)
-        return result, (1 if result["status"] == "blocked" else 0)
+        return result, (1 if result["status"] in {"blocked", "completed_with_failures"} else 0)
     if args.command=="prepare-model":
         from dishmook.provision import prepare_model
         model=prepare_model(args.name,args.catalog,args.models_dir,download=args.download)

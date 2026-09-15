@@ -54,3 +54,28 @@ def test_fake_comparison_does_not_claim_scientific_accuracy(tmp_path):
         select_model([tmp_path/"results.json",tmp_path/"results.json"])
     with pytest.raises(ValueError):
         experiment(tmp_path,seeds=[8],case_ids=["fall","energy"],profiles=["single","agents_5"])
+
+
+def test_failed_campaigns_propagate_to_summary_and_cli(tmp_path):
+    from argparse import Namespace
+    from dishmook.research_cli import dispatch
+    result, code = dispatch(Namespace(command='evaluate', model=None,
+        output_dir=tmp_path, seeds=[7], cases=['fall'], profiles=['single'],
+        output_budget=1, max_new_campaigns=None))
+    assert result['status'] == 'completed_with_failures'
+    assert result['failed_campaigns'] == 1
+    assert code == 1
+    assert result['profiles']['single']['accepted_answer_accuracy'] is None
+    # Resume preserves failure rather than resetting the spent task budget.
+    again = experiment(tmp_path,seeds=[7],case_ids=['fall'],profiles=['single'],output_budget=1)
+    assert again['failed_campaigns'] == 1
+
+
+@pytest.mark.parametrize('raw', [
+    '{"text":"24 joules","answer":24,"citations":[],"disagreements":[{"claim_id":"","issue":"No prior candidates"}]}',
+    r'{"text":"The limit of \(sin(x)/x\) is 1.","answer":1,"citations":[],"disagreements":[]}',
+])
+def test_observed_gpu_contract_failures_remain_rejected(raw):
+    from dishmook.runtime_models import ResearchCandidate
+    with pytest.raises(ValueError):
+        ResearchCandidate.model_validate_json(raw)
